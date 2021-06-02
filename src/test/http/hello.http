@@ -1,0 +1,15 @@
+POST http://localhost:8080/api/auth
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user"
+}
+
+###
+
+GET http://localhost:8080/api/hello/user
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2MjI2Mzc2NDcsImV4cCI6MTYyMjYzOTQ0N30.RI2zqg3UagF29cyJ9oxyBwTr3PtHb_KgXl7XjKrg8dgZiRQrBq_rcMnhnbgDzMbRHWD36yP9CcImmOpYl5NLJw
+
+###
