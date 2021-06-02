@@ -5,7 +5,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.util.Date;
-import java.util.Map;
 
 public class TokenHandler {
 
@@ -15,29 +14,22 @@ public class TokenHandler {
 
     public static final String ROLE_CLAIM = "role";
 
-
     public String generateToken(String username, String role) {
-        try {
-            long now = System.currentTimeMillis();
+        long now = System.currentTimeMillis();
 
-            return Jwts.builder()
-                    .setSubject(username)
+        return Jwts.builder()
+                .setSubject(username)
                 .claim(ROLE_CLAIM, role)
-                    .setIssuedAt(new Date(now))
-                    .setExpiration(new Date(now + EXPIRATION))
-                    .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
-                    .compact();
-        }catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        }
+                .setIssuedAt(new Date(now))
+                .setExpiration(new Date(now + EXPIRATION))
+                .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
+                .compact();
     }
 
     public Claims validateToken(String token) {
-        Claims claims = Jwts.parser()
+        return Jwts.parser()
                 .setSigningKey(SECRET.getBytes())
                 .parseClaimsJws(token)
                 .getBody();
-        return claims;
     }
 }

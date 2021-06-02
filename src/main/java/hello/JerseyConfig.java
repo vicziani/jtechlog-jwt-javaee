@@ -8,9 +8,7 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
-        System.out.println("JerseyConfig");
         packages("hello");
         register(RolesAllowedDynamicFeature.class);
-//        register(JwtFilter.class);
     }
 }
